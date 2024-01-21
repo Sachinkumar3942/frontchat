@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Link,Navigate,useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Add from "../img/addAvatar.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { auth, storage } from "../firebase";
-import { doc, setDoc, getFirestore } from "firebase/firestore";
+import { doc, setDoc} from "firebase/firestore";
 import { db } from "../firebase";
 const SignUp = () => {
   const [err, setErr] = useState(false);
@@ -39,6 +39,9 @@ const SignUp = () => {
             case "running":
               console.log("Upload is running");
               break;
+            default:
+              console.log("upload is complete");
+              break;  
           }
         },
         (error) => {
